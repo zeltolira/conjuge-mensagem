@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,9 +28,9 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private UUID idConjuge;
+	private UUID idUsuario;
 	@NotBlank
-	private String nomeConjuge;
+	private String nomeUsuario;
 	@NotNull
 	private Sexo sexo;
 	@NotBlank
@@ -39,13 +40,13 @@ public class Usuario {
 
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraUltimaAlteracao;
-	public Usuario(UUID idConjuge, @NotBlank String nomeConjuge, @NotNull Sexo sexo, @NotBlank String celular,
-			@NotNull LocalDate dataNascimento, LocalDateTime dataHoraUltimaAlteracao) {
-		this.idConjuge = idConjuge;
-		this.nomeConjuge = nomeConjuge;
-		this.sexo = sexo;
-		this.celular = celular;
-		this.dataNascimento = dataNascimento;
+	
+	
+	public Usuario(UsuarioRequest usuarioRequest) {
+		this.nomeUsuario = usuarioRequest.getNomeUsuario();
+		this.sexo = usuarioRequest.getSexo();
+		this.celular = usuarioRequest.getCelular();
+		this.dataNascimento = usuarioRequest.getDataNascimento();
 		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
 	
