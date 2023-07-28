@@ -1,8 +1,11 @@
 package br.com.lembrete.conjugemensagem.usuario.application.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioRequest;
+import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioListResponse;
 import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioResponse;
 import br.com.lembrete.conjugemensagem.usuario.application.repository.UsuarioRepository;
 import br.com.lembrete.conjugemensagem.usuario.domain.Usuario;
@@ -24,5 +27,13 @@ public class UsuarioApplicationService implements UsuarioService {
 		return UsuarioResponse.builder()
 				.idUsuario(usuario.getIdUsuario())
 				.build();
+	}
+
+	@Override
+	public List<UsuarioListResponse> buscaTodosUsuario() {
+		log.info("[inicia] UsuarioApplicationService - buscaTodosUsuario");
+		List<Usuario> usuarios = usuarioRespository.buscaTodosUsuarios();
+		log.info("[finaliza] UsuarioApplicationService - buscaTodosUsuario");
+		return UsuarioListResponse.converte(usuarios);
 	}
 }

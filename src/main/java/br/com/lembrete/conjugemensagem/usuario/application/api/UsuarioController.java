@@ -30,8 +30,9 @@ public class UsuarioController implements UsuarioAPI {
 	@Override
 	public List<UsuarioListResponse> getTodosUsuario() {
 		log.info("[inicia] UsuarioController - getTodosUsuario");
+		List<UsuarioListResponse> usuarios = usuarioService.buscaTodosUsuario();
 		log.info("[finaliza] UsuarioController - getTodosUsuario");
-		return null;
+		return usuarios;
 	}
 
 }
