@@ -1,10 +1,12 @@
 package br.com.lembrete.conjugemensagem.usuario.application.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioRequest;
+import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioDetalhadoResponse;
 import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioListResponse;
 import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioResponse;
 import br.com.lembrete.conjugemensagem.usuario.application.service.UsuarioService;
@@ -33,6 +35,14 @@ public class UsuarioController implements UsuarioAPI {
 		List<UsuarioListResponse> usuarios = usuarioService.buscaTodosUsuario();
 		log.info("[finaliza] UsuarioController - getTodosUsuario");
 		return usuarios;
+	}
+
+	@Override
+	public UsuarioDetalhadoResponse getTodosUsuariosPorId(UUID idUsuario) {
+		log.info("[inicia] UsuarioController - getTodosUsuariosPorId");
+		UsuarioDetalhadoResponse usuarioDetalhado = usuarioService.buscaUsuarioPorId(idUsuario);
+		log.info("[finaliza] UsuarioController - getTodosUsuariosPorId");
+		return usuarioDetalhado;
 	}
 
 }
