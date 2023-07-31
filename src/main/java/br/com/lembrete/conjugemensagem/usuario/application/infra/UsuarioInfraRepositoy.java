@@ -1,6 +1,7 @@
 package br.com.lembrete.conjugemensagem.usuario.application.infra;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
@@ -29,5 +30,12 @@ public class UsuarioInfraRepositoy implements UsuarioRepository {
 		List<Usuario> todosUsuarios = usuarioSpringDataJPARepository.findAll();
 		log.info("[finaliza] UsuarioInfraRepositoy - buscaTodosUsuarios");
 		return todosUsuarios;
+	}
+
+	@Override
+	public Usuario buscaUsuarioPorId(UUID idUsuario) {
+		log.info("[inicia] UsuarioInfraRepositoy - buscaUsuarioPorId");
+		log.info("[finaliza] UsuarioInfraRepositoy - buscaUsuarioPorId");
+		return null;
 	}
 }
