@@ -3,8 +3,10 @@ package br.com.lembrete.conjugemensagem.usuario.application.infra;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import br.com.lembrete.conjugemensagem.handler.APIException;
 import br.com.lembrete.conjugemensagem.usuario.application.repository.UsuarioRepository;
 import br.com.lembrete.conjugemensagem.usuario.domain.Usuario;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +37,9 @@ public class UsuarioInfraRepositoy implements UsuarioRepository {
 	@Override
 	public Usuario buscaUsuarioPorId(UUID idUsuario) {
 		log.info("[inicia] UsuarioInfraRepositoy - buscaUsuarioPorId");
+		Usuario usuario = usuarioSpringDataJPARepository.findById(idUsuario)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Usuario não encontrado!"));
 		log.info("[finaliza] UsuarioInfraRepositoy - buscaUsuarioPorId");
-		return null;
+		return usuario;
 	}
 }
