@@ -1,10 +1,10 @@
 package br.com.lembrete.conjugemensagem.usuario.application.api.response;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import br.com.lembrete.conjugemensagem.usuario.domain.Sexo;
+import br.com.lembrete.conjugemensagem.usuario.domain.Usuario;
 import lombok.Value;
 
 @Value
@@ -14,5 +14,13 @@ public class UsuarioDetalhadoResponse {
 	private Sexo sexo;
 	private String celular;
 	private LocalDate dataNascimento;
-	private LocalDateTime dataHoraUltimaAlteracao;
+
+	
+	public UsuarioDetalhadoResponse(Usuario usuario) {
+		this.idUsuario = usuario.getIdUsuario();
+		this.nomeUsuario = usuario.getNomeUsuario();
+		this.sexo = usuario.getSexo();
+		this.celular = usuario.getCelular();
+		this.dataNascimento = usuario.getDataNascimento();
+	}
 }
