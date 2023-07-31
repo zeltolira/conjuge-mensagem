@@ -13,7 +13,7 @@ public class ConjugeMensagemApplication {
 
 	@GetMapping
 	public String getHomeTest() {
-		return "Lembrete do Amor";
+		return "Já disse que te amo hoje?";
 	}
 	
 	public static void main(String[] args) {
