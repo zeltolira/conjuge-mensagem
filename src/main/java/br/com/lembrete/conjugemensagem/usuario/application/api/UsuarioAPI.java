@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioRequest;
 import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioDetalhadoResponse;
 import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioListResponse;
@@ -33,4 +34,6 @@ public interface UsuarioAPI {
 	@GetMapping("/{idUsuario}")
 	@ResponseStatus(code = HttpStatus.OK)
 	UsuarioDetalhadoResponse getTodosUsuariosPorId(@PathVariable UUID idUsuario);
+	
+	void AlteraUsuarioPorId(@PathVariable UUID idUsuario, @Valid @RequestBody UsuarioAlteracaoRequest usuarioAlteracaoResquest);
 }
