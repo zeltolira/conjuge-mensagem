@@ -42,4 +42,11 @@ public class UsuarioInfraRepositoy implements UsuarioRepository {
 		log.info("[finaliza] UsuarioInfraRepositoy - buscaUsuarioPorId");
 		return usuario;
 	}
+
+	@Override
+	public void deletaUsuario(Usuario usuario) {
+		log.info("[inicia] UsuarioInfraRepositoy - deletaUsuario");
+		log.info("[finaliza] UsuarioInfraRepositoy - deletaUsuario");
+		
+	}
 }

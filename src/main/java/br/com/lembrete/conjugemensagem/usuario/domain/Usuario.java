@@ -60,4 +60,5 @@ public class Usuario {
 		this.dataHoraUltimaAlteracao = LocalDateTime.now();
 		
 	}
+
 }
