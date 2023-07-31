@@ -46,6 +46,7 @@ public class UsuarioInfraRepositoy implements UsuarioRepository {
 	@Override
 	public void deletaUsuario(Usuario usuario) {
 		log.info("[inicia] UsuarioInfraRepositoy - deletaUsuario");
+		usuarioSpringDataJPARepository.delete(usuario);
 		log.info("[finaliza] UsuarioInfraRepositoy - deletaUsuario");
 		
 	}
