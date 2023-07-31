@@ -56,4 +56,11 @@ public class UsuarioApplicationService implements UsuarioService {
 		usuarioRespository.salva(usuario);
 		log.info("[finaliza] UsuarioApplicationService - alteraUuarioPorId");
 	}
+
+	@Override
+	public void deleta(UUID idUsuario) {
+		log.info("[inicia] UsuarioApplicationService - deleta");
+		log.info("[finaliza] UsuarioApplicationService - deleta");
+		
+	}
 }

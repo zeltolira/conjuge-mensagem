@@ -15,4 +15,5 @@ public interface UsuarioService {
 	List<UsuarioListResponse> buscaTodosUsuario();
 	UsuarioDetalhadoResponse buscaUsuarioPorId(UUID idUsuario);
 	void alteraUsuarioPorId(UUID idUsuario, UsuarioAlteracaoRequest usuarioAlteracaoResquest);
+	void deleta(UUID idUsuario);
 }
