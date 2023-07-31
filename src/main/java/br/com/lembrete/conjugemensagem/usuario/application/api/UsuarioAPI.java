@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioR
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/v1/usuario")
+@RequestMapping(value = "/v1/usuario")
 public interface UsuarioAPI {
 
 	@PostMapping
@@ -31,9 +32,11 @@ public interface UsuarioAPI {
 	@ResponseStatus(code = HttpStatus.OK)
 	List<UsuarioListResponse> getTodosUsuario();
 	
-	@GetMapping("/{idUsuario}")
+	@GetMapping(value = "/{idUsuario}")
 	@ResponseStatus(code = HttpStatus.OK)
 	UsuarioDetalhadoResponse getTodosUsuariosPorId(@PathVariable UUID idUsuario);
 	
+	@PatchMapping(value = "/{idUsuario}")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	void AlteraUsuarioPorId(@PathVariable UUID idUsuario, @Valid @RequestBody UsuarioAlteracaoRequest usuarioAlteracaoResquest);
 }
