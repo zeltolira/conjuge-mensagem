@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioRequest;
 import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioDetalhadoResponse;
 import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioListResponse;
@@ -45,5 +46,14 @@ public class UsuarioApplicationService implements UsuarioService {
 		Usuario usuario = usuarioRespository.buscaUsuarioPorId(idUsuario);
 		log.info("[finaliza] UsuarioApplicationService - buscaUsuarioPorId");
 		return new UsuarioDetalhadoResponse(usuario);
+	}
+
+	@Override
+	public void alteraUsuarioPorId(UUID idUsuario, UsuarioAlteracaoRequest usuarioAlteracaoResquest) {
+		log.info("[inicia] UsuarioApplicationService - alteraUuarioPorId");
+		Usuario usuario = usuarioRespository.buscaUsuarioPorId(idUsuario);
+		usuario.altera(usuarioAlteracaoResquest);
+		usuarioRespository.salva(usuario);
+		log.info("[finaliza] UsuarioApplicationService - alteraUuarioPorId");
 	}
 }
