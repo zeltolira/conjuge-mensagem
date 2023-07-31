@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,6 +50,14 @@ public class Usuario {
 		this.dataNascimento = usuarioRequest.getDataNascimento();
 		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
-	
-	
+
+
+	public void altera(UsuarioAlteracaoRequest usuarioRequest) {
+		this.nomeUsuario = usuarioRequest.getNomeUsuario();
+		this.sexo = usuarioRequest.getSexo();
+		this.celular = usuarioRequest.getCelular();
+		this.dataNascimento = usuarioRequest.getDataNascimento();
+		this.dataHoraUltimaAlteracao = LocalDateTime.now();
+		
+	}
 }
