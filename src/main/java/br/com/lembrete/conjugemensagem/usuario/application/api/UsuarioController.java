@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioRequest;
 import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioDetalhadoResponse;
 import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioListResponse;
@@ -43,6 +44,15 @@ public class UsuarioController implements UsuarioAPI {
 		UsuarioDetalhadoResponse usuarioDetalhado = usuarioService.buscaUsuarioPorId(idUsuario);
 		log.info("[finaliza] UsuarioController - getTodosUsuariosPorId");
 		return usuarioDetalhado;
+	}
+
+	@Override
+	public void AlteraUsuarioPorId(UUID idUsuario, @Valid UsuarioAlteracaoRequest usuarioAlteracaoResquest) {
+		log.info("[inicia] UsuarioController - AlteraUsuarioPorId");
+		log.info("[IdUsuario] {}", idUsuario);
+		usuarioService.alteraUsuarioPorId(idUsuario, usuarioAlteracaoResquest);
+		log.info("[finaliza] UsuarioController - AlteraUsuarioPorId");
+		
 	}
 
 }
