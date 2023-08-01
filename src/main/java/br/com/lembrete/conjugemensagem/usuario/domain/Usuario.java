@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@Table(name = "conjuge")
+@Table(name = "usuario")
 public class Usuario {
 
 	@Id
@@ -41,6 +41,10 @@ public class Usuario {
 
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraUltimaAlteracao;
+	
+//	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+//	@JoinColumn(name = fk_id_conjuge)
+//	private Conjuge conjuge;
 	
 	
 	public Usuario(UsuarioRequest usuarioRequest) {
