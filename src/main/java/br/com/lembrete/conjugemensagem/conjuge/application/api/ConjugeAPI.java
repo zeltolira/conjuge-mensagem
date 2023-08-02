@@ -15,7 +15,7 @@ import br.com.lembrete.conjugemensagem.conjuge.application.response.ConjugeRespo
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/v1/conjuge")
+@RequestMapping(value = "/v1/usuario/{idUsuario}/conjuge")
 public interface ConjugeAPI {
 
 	@PostMapping
