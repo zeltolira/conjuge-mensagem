@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import br.com.lembrete.conjugemensagem.conjuge.application.request.ConjugeRequest;
+import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
 import br.com.lembrete.conjugemensagem.usuario.domain.Sexo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

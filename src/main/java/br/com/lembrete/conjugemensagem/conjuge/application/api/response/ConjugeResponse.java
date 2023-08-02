@@ -1,4 +1,5 @@
-package br.com.lembrete.conjugemensagem.conjuge.application.response;
+package br.com.lembrete.conjugemensagem.conjuge.application.api.response
+;
 
 import java.util.UUID;
 

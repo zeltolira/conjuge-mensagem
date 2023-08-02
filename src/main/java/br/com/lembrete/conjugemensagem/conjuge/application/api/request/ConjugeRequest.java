@@ -1,4 +1,4 @@
-package br.com.lembrete.conjugemensagem.conjuge.application.request;
+package br.com.lembrete.conjugemensagem.conjuge.application.api.request;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.lembrete.conjugemensagem.conjuge.application.request.ConjugeRequest;
-import br.com.lembrete.conjugemensagem.conjuge.application.response.ConjugeResponse;
+import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
+import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeResponse;
 import jakarta.validation.Valid;
 
 @RestController
