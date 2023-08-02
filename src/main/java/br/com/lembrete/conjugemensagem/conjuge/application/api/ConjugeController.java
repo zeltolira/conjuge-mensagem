@@ -16,7 +16,7 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class ConjugeController implements ConjugeAPI {
 
-	private ConjugeService conjugeService;
+	private final ConjugeService conjugeService;
 
 	@Override
 	public ConjugeResponse postConjuge(UUID idUsuario, @Valid ConjugeRequest conjugeRequest) {
