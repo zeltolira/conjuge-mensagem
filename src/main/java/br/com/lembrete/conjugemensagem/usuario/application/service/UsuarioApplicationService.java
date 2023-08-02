@@ -23,10 +23,10 @@ public class UsuarioApplicationService implements UsuarioService {
 	private final UsuarioRepository usuarioRespository;
 
 	@Override
-	public UsuarioResponse criaConjuge(UsuarioRequest usuarioRequest) {
-		log.info("[inicia] UsuarioApplicationService - criaConjuge");
+	public UsuarioResponse criaUsuario(UsuarioRequest usuarioRequest) {
+		log.info("[inicia] UsuarioApplicationService - criaUsuario");
 		Usuario usuario = usuarioRespository.salva(new Usuario(usuarioRequest));
-		log.info("[finaliza] UsuarioApplicationService - criaConjuge");
+		log.info("[finaliza] UsuarioApplicationService - criaUsuario");
 		return UsuarioResponse.builder()
 				.idUsuario(usuario.getIdUsuario())
 				.build();

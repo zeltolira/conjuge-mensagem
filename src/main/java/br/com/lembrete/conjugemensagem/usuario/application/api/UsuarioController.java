@@ -23,10 +23,10 @@ public class UsuarioController implements UsuarioAPI {
 	private final UsuarioService usuarioService;
 
 	@Override
-	public UsuarioResponse postConjuge(@Valid UsuarioRequest usuarioRequest) {
-		log.info("[inicia] UsuarioController - postConjuge");
-		UsuarioResponse usuarioCriado = usuarioService.criaConjuge(usuarioRequest);
-		log.info("[finaliza] UsuarioController - postConjuge");
+	public UsuarioResponse postUsuario(@Valid UsuarioRequest usuarioRequest) {
+		log.info("[inicia] UsuarioController - postUsuario");
+		UsuarioResponse usuarioCriado = usuarioService.criaUsuario(usuarioRequest);
+		log.info("[finaliza] UsuarioController - postUsuario");
 		return usuarioCriado;
 	}
 

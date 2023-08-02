@@ -11,7 +11,7 @@ import br.com.lembrete.conjugemensagem.usuario.application.api.response.UsuarioR
 import jakarta.validation.Valid;
 
 public interface UsuarioService {
-	UsuarioResponse criaConjuge(@Valid UsuarioRequest usuarioRequest);
+	UsuarioResponse criaUsuario(@Valid UsuarioRequest usuarioRequest);
 	List<UsuarioListResponse> buscaTodosUsuario();
 	UsuarioDetalhadoResponse buscaUsuarioPorId(UUID idUsuario);
 	void alteraUsuarioPorId(UUID idUsuario, UsuarioAlteracaoRequest usuarioAlteracaoResquest);
