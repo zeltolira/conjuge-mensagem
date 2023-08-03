@@ -1,5 +1,7 @@
 package br.com.lembrete.conjugemensagem.conjuge.application.infra;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.lembrete.conjugemensagem.conjuge.application.repository.ConjugeRepository;
@@ -20,6 +22,14 @@ public class ConjugeInfraRepository implements ConjugeRepository {
 		conjugeSpringDataJPARepository.save(conjuge);
 		log.info("[finaliza] ConjugeInfraRepository - salvaConjuge");
 		return conjuge;
+	}
+
+	@Override
+	public List<Conjuge> buscaTodosConjuges() {
+		log.info("[inicia] ConjugeInfraRepository - buscaTodosConjuges");
+		List<Conjuge> todosConjuges = conjugeSpringDataJPARepository.findAll();
+		log.info("[finaliza] ConjugeInfraRepository - buscaTodosConjuges");
+		return todosConjuges;
 	}
 
 }
