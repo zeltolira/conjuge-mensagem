@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
+import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeDetalhadoResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeListResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.service.ConjugeService;
@@ -34,6 +35,13 @@ public class ConjugeController implements ConjugeAPI {
 		List<ConjugeListResponse> conjuges = conjugeService.buscaTodosConjuges();
 		log.info("[finaliza] ConjugeController - getTodosConjuges");
 		return conjuges;
+	}
+
+	@Override
+	public ConjugeDetalhadoResponse getConjugePorId(UUID idConjuge) {
+		log.info("[inicia] ConjugeController - getConjugePorId");
+		log.info("[finaliza] ConjugeController - getConjugePorId");
+		return null;
 	}
 
 }
