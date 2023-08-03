@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
+import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeDetalhadoResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeListResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeResponse;
 import jakarta.validation.Valid;
@@ -28,5 +29,9 @@ public interface ConjugeAPI {
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	List<ConjugeListResponse> getTodosConjuges();
+	
+	@GetMapping(value = "/{idConjuge}")
+	@ResponseStatus(code = HttpStatus.OK)
+	ConjugeDetalhadoResponse getConjugePorId(@PathVariable UUID idConjuge);
 	
 }
