@@ -1,10 +1,12 @@
 package br.com.lembrete.conjugemensagem.conjuge.application.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
+import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeListResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.repository.ConjugeRepository;
 import br.com.lembrete.conjugemensagem.conjuge.domain.Conjuge;
@@ -27,6 +29,13 @@ public class ConjugeApplicationService implements ConjugeService {
 		return ConjugeResponse.builder()
 				.idConjuge(conjuge.getIdConjuge())
 				.build();
+	}
+
+	@Override
+	public List<ConjugeListResponse> buscaTodosConjuges() {
+		log.info("[inicia] ConjugeApplicationService - buscaTodosConjuges");
+		log.info("[finaliza] ConjugeApplicationService - buscaTodosConjuges");
+		return null;
 	}
 
 }
