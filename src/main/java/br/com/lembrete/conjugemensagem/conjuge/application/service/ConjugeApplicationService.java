@@ -34,8 +34,9 @@ public class ConjugeApplicationService implements ConjugeService {
 	@Override
 	public List<ConjugeListResponse> buscaTodosConjuges() {
 		log.info("[inicia] ConjugeApplicationService - buscaTodosConjuges");
+		List<Conjuge> conjuges = conjugeRepository.buscaTodosConjuges();
 		log.info("[finaliza] ConjugeApplicationService - buscaTodosConjuges");
-		return null;
+		return ConjugeListResponse.converte(conjuges);
 	}
 
 }
