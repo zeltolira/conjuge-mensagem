@@ -65,6 +65,9 @@ public class ConjugeApplicationService implements ConjugeService {
 	@Override
 	public void deletaConjugePorId(UUID idUsuario, UUID idConjuge) {
 		log.info("[inicia] ConjugeApplicationService - alteraConjugeAtravesId");
+		usuarioService.buscaUsuarioPorId(idUsuario);
+		Conjuge conjuge = conjugeRepository.getConjugePorId(idUsuario, idConjuge);
+		conjugeRepository.deletaConjuge(conjuge);
 		log.info("[finaliza] ConjugeApplicationService - alteraConjugeAtravesId");
 		
 	}
