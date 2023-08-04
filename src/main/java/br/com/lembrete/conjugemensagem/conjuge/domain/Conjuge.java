@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
 import br.com.lembrete.conjugemensagem.usuario.domain.Sexo;
 import jakarta.persistence.Column;
@@ -49,6 +50,14 @@ public class Conjuge {
 //	private Usuario usuario;
 
 	public Conjuge(UUID idUsuario, @Valid ConjugeRequest conjugeRequest) {
+		this.nomeConjuge = conjugeRequest.getNomeConjuge();
+		this.sexo = conjugeRequest.getSexo();
+		this.celular = conjugeRequest.getCelular();
+		this.dataNascimento = conjugeRequest.getDataNascimento();
+		this.dataHoraUltimaAlteracao = LocalDateTime.now();
+	}
+
+	public void altera(@Valid ConjugeAlteracaoRequest conjugeRequest) {
 		this.nomeConjuge = conjugeRequest.getNomeConjuge();
 		this.sexo = conjugeRequest.getSexo();
 		this.celular = conjugeRequest.getCelular();
