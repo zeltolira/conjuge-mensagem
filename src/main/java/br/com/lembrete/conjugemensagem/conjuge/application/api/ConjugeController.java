@@ -50,6 +50,8 @@ public class ConjugeController implements ConjugeAPI {
 	@Override
 	public void PatchConjuge(UUID idUsuario, UUID idConjuge, @Valid ConjugeAlteracaoRequest conjugeAlteracaoRequest) {
 		log.info("[inicia] ConjugeController - PatchConjuge");
+		log.info("[idUsurio] {} - [idConjuge] {} -", idUsuario, idConjuge);
+		conjugeService.alteraConjugeAtravesId(idUsuario, idConjuge);
 		log.info("[finaliza] ConjugeController - PatchConjuge");
 	}
 }
