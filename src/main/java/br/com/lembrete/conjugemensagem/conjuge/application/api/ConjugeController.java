@@ -50,8 +50,17 @@ public class ConjugeController implements ConjugeAPI {
 	@Override
 	public void PatchConjuge(UUID idUsuario, UUID idConjuge, @Valid ConjugeAlteracaoRequest conjugeAlteracaoRequest) {
 		log.info("[inicia] ConjugeController - PatchConjuge");
-		log.info("[idUsurio] {} - [idConjuge] {} -", idUsuario, idConjuge);
+		log.info("[idUsuario] {} - [idConjuge] {} -", idUsuario, idConjuge);
 		conjugeService.alteraConjugeAtravesId(idUsuario, idConjuge, conjugeAlteracaoRequest);
 		log.info("[finaliza] ConjugeController - PatchConjuge");
+	}
+
+	@Override
+	public void DeleteConjugePorId(UUID idUsuario, UUID idConjuge) {
+		log.info("[inicia] ConjugeController - DeleteConjugePorId");
+		log.info("[idUsuario] {} - [idConjuge] {} -", idUsuario, idConjuge);
+		conjugeService.deletaConjugePorId(idUsuario, idConjuge);
+		log.info("[finaliza] ConjugeController - DeleteConjugePorId");
+		
 	}
 }
