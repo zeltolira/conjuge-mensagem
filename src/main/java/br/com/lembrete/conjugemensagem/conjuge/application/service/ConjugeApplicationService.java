@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
+import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeDetalhadoResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeListResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.repository.ConjugeRepository;
@@ -37,6 +38,12 @@ public class ConjugeApplicationService implements ConjugeService {
 		List<Conjuge> conjuges = conjugeRepository.buscaTodosConjuges();
 		log.info("[finaliza] ConjugeApplicationService - buscaTodosConjuges");
 		return ConjugeListResponse.converte(conjuges);
+	}
+
+	@Override
+	public ConjugeDetalhadoResponse getConjugePorId(UUID idUsuario, UUID idConjuge) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
