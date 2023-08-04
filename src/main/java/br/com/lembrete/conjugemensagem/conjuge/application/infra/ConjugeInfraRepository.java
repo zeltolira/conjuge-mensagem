@@ -1,11 +1,14 @@
 package br.com.lembrete.conjugemensagem.conjuge.application.infra;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import br.com.lembrete.conjugemensagem.conjuge.application.repository.ConjugeRepository;
 import br.com.lembrete.conjugemensagem.conjuge.domain.Conjuge;
+import br.com.lembrete.conjugemensagem.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -30,6 +33,15 @@ public class ConjugeInfraRepository implements ConjugeRepository {
 		List<Conjuge> todosConjuges = conjugeSpringDataJPARepository.findAll();
 		log.info("[finaliza] ConjugeInfraRepository - buscaTodosConjuges");
 		return todosConjuges;
+	}
+
+	@Override
+	public Conjuge getConjugePorId(UUID idUsuario, UUID idConjuge) {
+		log.info("[inicia] ConjugeInfraRepository - getConjugePorId");
+		var conjuge = conjugeSpringDataJPARepository.findById(idConjuge)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Conjuge não encotrado para o idConjuge " + idConjuge));
+		log.info("[finaliza] ConjugeInfraRepository - getConjugePorId");
+		return conjuge;
 	}
 
 }
