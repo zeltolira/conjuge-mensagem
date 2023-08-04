@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeDetalhadoResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeListResponse;
@@ -32,6 +34,10 @@ public interface ConjugeAPI {
 	
 	@GetMapping(value = "/{idConjuge}")
 	@ResponseStatus(code = HttpStatus.OK)
-	ConjugeDetalhadoResponse getConjugePorId(@PathVariable UUID idConjuge);
+	ConjugeDetalhadoResponse getConjugePorId(@PathVariable UUID idUsuario, @PathVariable UUID idConjuge);
+	
+	@PatchMapping(value = "/{idConjuge}")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	void PatchConjuge(@PathVariable UUID idUsuario, @PathVariable UUID idConjuge, @Valid @RequestBody ConjugeAlteracaoRequest conjugeAlteracaoRequest);
 	
 }

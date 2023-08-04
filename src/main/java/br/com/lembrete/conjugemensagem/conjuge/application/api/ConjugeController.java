@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeDetalhadoResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeListResponse;
@@ -41,9 +42,14 @@ public class ConjugeController implements ConjugeAPI {
 	public ConjugeDetalhadoResponse getConjugePorId(UUID idUsuario, UUID idConjuge) {
 		log.info("[inicia] ConjugeController - getConjugePorId");
 		log.info("[idUsuario] {} - [idConjuge] {} - ", idUsuario, idConjuge);
-		ConjugeDetalhadoResponse conjuge = conjugeService.getConjugePorId(idUsuario, idConjuge);
+		ConjugeDetalhadoResponse conjugeDetalhado = conjugeService.getConjugePorId(idUsuario, idConjuge);
 		log.info("[finaliza] ConjugeController - getConjugePorId");
-		return conjuge;
+		return conjugeDetalhado;
 	}
 
+	@Override
+	public void PatchConjuge(UUID idUsuario, UUID idConjuge, @Valid ConjugeAlteracaoRequest conjugeAlteracaoRequest) {
+		log.info("[inicia] ConjugeController - PatchConjuge");
+		log.info("[finaliza] ConjugeController - PatchConjuge");
+	}
 }
