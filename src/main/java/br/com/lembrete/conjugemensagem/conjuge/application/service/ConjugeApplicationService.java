@@ -5,12 +5,14 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeDetalhadoResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeListResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.repository.ConjugeRepository;
 import br.com.lembrete.conjugemensagem.conjuge.domain.Conjuge;
+import br.com.lembrete.conjugemensagem.usuario.application.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -21,6 +23,7 @@ import lombok.extern.log4j.Log4j2;
 public class ConjugeApplicationService implements ConjugeService {
 
 	private final ConjugeRepository conjugeRepository;
+	private final UsuarioService usuarioService;
 
 	@Override
 	public ConjugeResponse criaConjuge(UUID idUsuario, @Valid ConjugeRequest conjugeRequest) {
@@ -49,8 +52,12 @@ public class ConjugeApplicationService implements ConjugeService {
 	}
 
 	@Override
-	public void alteraConjugeAtravesId(UUID idUsuario, UUID idConjuge) {
+	public void alteraConjugeAtravesId(UUID idUsuario, UUID idConjuge, @Valid ConjugeAlteracaoRequest conjugeAlteracaoRequest) {
 		log.info("[inicia] ConjugeApplicationService - alteraConjugeAtravesId");
+		usuarioService.buscaUsuarioPorId(idUsuario);
+		Conjuge conjuge =  conjugeRepository.getConjugePorId(idUsuario, idConjuge);
+		conjuge.altera(conjugeAlteracaoRequest);
+		conjugeRepository.salvaConjuge(conjuge);
 		log.info("[finaliza] ConjugeApplicationService - alteraConjugeAtravesId");
 		
 	}
