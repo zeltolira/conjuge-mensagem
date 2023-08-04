@@ -42,8 +42,10 @@ public class ConjugeApplicationService implements ConjugeService {
 
 	@Override
 	public ConjugeDetalhadoResponse getConjugePorId(UUID idUsuario, UUID idConjuge) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("[inicia] ConjugeApplicationService - getConjugePorId");
+		Conjuge conjuge = conjugeRepository.getConjugePorId(idUsuario, idConjuge);
+		log.info("[finaliza] ConjugeApplicationService - getConjugePorId");
+		return new ConjugeDetalhadoResponse(conjuge);
 	}
 
 }
