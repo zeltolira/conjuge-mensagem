@@ -3,6 +3,7 @@ package br.com.lembrete.conjugemensagem.mensagem.domain;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -39,5 +41,8 @@ public class Mensagem {
 		this.dataHoraUltimaAlteracao = LocalDateTime.now();
 	}
 
-
+	public void altera(@Valid MensagemAlteracaoRequest mensagemRequest) {
+		this.mensagemAReceber = mensagemRequest.getMensagemAReceber();
+		this.dataHoraUltimaAlteracao = LocalDateTime.now();
+	}
 }
