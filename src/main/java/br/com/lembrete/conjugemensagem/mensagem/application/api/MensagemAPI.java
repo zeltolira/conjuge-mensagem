@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,4 +34,8 @@ public interface MensagemAPI {
 	@GetMapping(value = "/{idMensagem}")
 	@ResponseStatus(code = HttpStatus.OK)
 	MensagemDetalhadaResponse getMensagemPorId(@PathVariable UUID idConjuge, @PathVariable UUID idMensagem);
+	
+	@PatchMapping(value = "/{idMensagem}")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	void PatchMensagem(@PathVariable UUID idConjuge, @PathVariable UUID idMensagem, @valid @RequestBody MensagemAlteracaoRequest mensagemAlteracaoRequest);
 }
