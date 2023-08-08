@@ -7,11 +7,13 @@ import java.util.UUID;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
 import br.com.lembrete.conjugemensagem.usuario.domain.Sexo;
+import br.com.lembrete.conjugemensagem.usuario.domain.Usuario;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -46,8 +48,8 @@ public class Conjuge {
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraUltimaAlteracao;
 	
-//	@OneToOne(mappedBy = "conjuge")
-//	private Usuario usuario;
+	@OneToOne(mappedBy = "conjuge")
+	private Usuario usuario;
 
 	public Conjuge(UUID idUsuario, @Valid ConjugeRequest conjugeRequest) {
 		this.nomeConjuge = conjugeRequest.getNomeConjuge();

@@ -4,12 +4,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.lembrete.conjugemensagem.conjuge.domain.Conjuge;
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioRequest;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -42,9 +46,9 @@ public class Usuario {
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraUltimaAlteracao;
 	
-//	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-//	@JoinColumn(name = fk_id_conjuge)
-//	private Conjuge conjuge;
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "id_conjuge")
+	private Conjuge conjuge;
 	
 	
 	public Usuario(UsuarioRequest usuarioRequest) {
