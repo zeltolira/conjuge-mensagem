@@ -33,8 +33,9 @@ public class MensagemApplicationService implements MensagemService {
 	@Override
 	public List<MensagemListResponse> buscaTodasMensagem() {
 		log.info("[inicia] MensagemApplicationService - buscaTodasMensagem");
+		List<Mensagem> mensagens = mensagemRepository.buscaTodasMensagens();
 		log.info("[finaliza] MensagemApplicationService - buscaTodasMensagem");
-		return null;
+		return MensagemListResponse.converte(mensagens);
 	}
 
 }
