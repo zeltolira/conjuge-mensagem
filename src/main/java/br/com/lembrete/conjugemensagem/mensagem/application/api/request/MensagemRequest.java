@@ -8,7 +8,7 @@ import lombok.Value;
 @Value
 public class MensagemRequest {
 	@NotBlank
-	private String mensagem;
+	private String mensagemAReceber;
 	
 	private LocalDateTime dataHoraDoCadastro;
 }
