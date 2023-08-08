@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
+import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemDetalhadaResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemListResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.service.MensagemService;
@@ -33,6 +34,14 @@ public class MensagemController implements MensagemAPI {
 		List<MensagemListResponse> mensagens = mensagemService.buscaTodasMensagem();
 		log.info("[finaliza] MensagemController - getTodasMensagens");
 		return mensagens;
+	}
+
+	@Override
+	public MensagemDetalhadaResponse getMensagemPorId(UUID idConjuge, UUID idMensagem) {
+		log.info("[inicia] MensagemController - getMensagemPorId");
+		MensagemDetalhadaResponse mensagemDetalhada = mensagemService.buscaMensagemPorId(idConjuge, idMensagem);
+		log.info("[finaliza] MensagemController - getMensagemPorId");
+		return mensagemDetalhada;
 	}
 
 }

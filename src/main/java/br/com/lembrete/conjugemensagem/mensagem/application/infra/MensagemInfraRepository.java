@@ -1,9 +1,12 @@
 package br.com.lembrete.conjugemensagem.mensagem.application.infra;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import br.com.lembrete.conjugemensagem.handler.APIException;
 import br.com.lembrete.conjugemensagem.mensagem.application.repository.MensagemRepository;
 import br.com.lembrete.conjugemensagem.mensagem.domain.Mensagem;
 import lombok.RequiredArgsConstructor;
@@ -25,13 +28,21 @@ public class MensagemInfraRepository implements MensagemRepository {
 	return mensagem;
 	}
 
-
 	@Override
 	public List<Mensagem> buscaTodasMensagens() {
 		log.info("[inicia] MensagemInfraRepository - buscaTodasMensagens");
 		List<Mensagem> todasMensagens = mensagemSpringDataJPARepository.findAll();
 		log.info("[finaliza] MensagemInfraRepository - buscaTodasMensagens");
 		return todasMensagens;
+	}
+
+	@Override
+	public Mensagem buscaMensagemPorId(UUID idConjuge, UUID idMensagem) {
+		log.info("[inicia] MensagemInfraRepository - buscaMensagemPorId");
+		var mensagem = mensagemSpringDataJPARepository.findById(idMensagem)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Conjuge não encotrado para o idConjuge " + idMensagem));;
+	log.info("[finaliza] MensagemInfraRepository - buscaMensagemPorId");
+		return mensagem;
 	}
 
 }

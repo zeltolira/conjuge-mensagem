@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
+import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemDetalhadaResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemListResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemResponse;
 import jakarta.validation.Valid;
@@ -28,4 +29,8 @@ public interface MensagemAPI {
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	List<MensagemListResponse> getTodasMensagens();
+	
+	@GetMapping(value = "/{idMensagem}")
+	@ResponseStatus(code = HttpStatus.OK)
+	MensagemDetalhadaResponse getMensagemPorId(@PathVariable UUID idConjuge, @PathVariable UUID idMensagem);
 }

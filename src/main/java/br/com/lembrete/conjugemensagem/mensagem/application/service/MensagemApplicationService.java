@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
+import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemDetalhadaResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemListResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.repository.MensagemRepository;
@@ -36,6 +37,14 @@ public class MensagemApplicationService implements MensagemService {
 		List<Mensagem> mensagens = mensagemRepository.buscaTodasMensagens();
 		log.info("[finaliza] MensagemApplicationService - buscaTodasMensagem");
 		return MensagemListResponse.converte(mensagens);
+	}
+
+	@Override
+	public MensagemDetalhadaResponse buscaMensagemPorId(UUID idConjuge, UUID idMensagem) {
+		log.info("[inicia] MensagemApplicationService - buscaMensagemPorId");
+		Mensagem mensagem = mensagemRepository.buscaMensagemPorId(idConjuge, idMensagem);
+		log.info("[finaliza] MensagemApplicationService - buscaMensagemPorId");
+		return new MensagemDetalhadaResponse(mensagem);
 	}
 
 }
