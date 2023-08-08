@@ -5,12 +5,15 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.lembrete.conjugemensagem.conjuge.application.service.ConjugeService;
+import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemDetalhadaResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemListResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.repository.MensagemRepository;
 import br.com.lembrete.conjugemensagem.mensagem.domain.Mensagem;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -20,7 +23,8 @@ import lombok.extern.log4j.Log4j2;
 public class MensagemApplicationService implements MensagemService {
 
 	private final MensagemRepository mensagemRepository;
-
+	private final ConjugeService conjugeService;
+	
 	@Override
 	public MensagemResponse criaMensagem(UUID idConjuge, MensagemRequest mensagemRequest) {
 		log.info("[inicia] MensagemApplicationService - criaMensagem");
@@ -45,6 +49,17 @@ public class MensagemApplicationService implements MensagemService {
 		Mensagem mensagem = mensagemRepository.buscaMensagemPorId(idConjuge, idMensagem);
 		log.info("[finaliza] MensagemApplicationService - buscaMensagemPorId");
 		return new MensagemDetalhadaResponse(mensagem);
+	}
+
+	@Override
+	public void alteraMensagemAtravesId(UUID idConjuge, UUID idMensagem, @Valid MensagemAlteracaoRequest mensagemAlteracaoRequest) {
+		log.info("[inicia] MensagemApplicationService - alteraMensagemAtravesId");
+		conjugeService.getConjugePorId(null, idConjuge);
+		Mensagem mensagem = mensagemRepository.buscaMensagemPorId(idConjuge, idMensagem);
+		mensagem.altera(mensagemAlteracaoRequest);
+		mensagemRepository.salvaMensagem(mensagem);
+		log.info("[finaliza] MensagemApplicationService - alteraMensagemAtravesId");
+		
 	}
 
 }

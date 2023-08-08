@@ -49,7 +49,7 @@ public class MensagemController implements MensagemAPI {
 	public void PatchMensagem(UUID idConjuge, UUID idMensagem, MensagemAlteracaoRequest mensagemAlteracaoRequest) {
 		log.info("[inicia] MensagemController - PatchMensagem");
 		log.info("[IdConjuge] {} - [IdMensagem] {} - ", idConjuge, idMensagem);
-		mensagemService.alteraMensagemAtravesId(idConjuge, idMensagem);
+		mensagemService.alteraMensagemAtravesId(idConjuge, idMensagem, mensagemAlteracaoRequest);
 		log.info("[finaliza] MensagemController - PatchMensagem");
 		
 	}
