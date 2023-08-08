@@ -30,8 +30,9 @@ public class MensagemController implements MensagemAPI {
 	@Override
 	public List<MensagemListResponse> getTodasMensagens() {
 		log.info("[inicia] MensagemController - getTodasMensagens");
+		List<MensagemListResponse> mensagens = mensagemService.buscaTodasMensagem();
 		log.info("[finaliza] MensagemController - getTodasMensagens");
-		return null;
+		return mensagens;
 	}
 
 }

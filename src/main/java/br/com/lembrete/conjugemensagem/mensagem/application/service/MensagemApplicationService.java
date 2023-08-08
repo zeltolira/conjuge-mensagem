@@ -1,10 +1,12 @@
 package br.com.lembrete.conjugemensagem.mensagem.application.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
+import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemListResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.repository.MensagemRepository;
 import br.com.lembrete.conjugemensagem.mensagem.domain.Mensagem;
@@ -26,6 +28,13 @@ public class MensagemApplicationService implements MensagemService {
 		return MensagemResponse.builder()
 				.idMensagem(mensagem.getIdMensagem())
 				.build();
+	}
+
+	@Override
+	public List<MensagemListResponse> buscaTodasMensagem() {
+		log.info("[inicia] MensagemApplicationService - buscaTodasMensagem");
+		log.info("[finaliza] MensagemApplicationService - buscaTodasMensagem");
+		return null;
 	}
 
 }
