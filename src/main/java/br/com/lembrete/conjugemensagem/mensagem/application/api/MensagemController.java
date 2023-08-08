@@ -1,10 +1,12 @@
 package br.com.lembrete.conjugemensagem.mensagem.application.api;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
+import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemListResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.service.MensagemService;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,13 @@ public class MensagemController implements MensagemAPI {
 		MensagemResponse mensagemCriada =  mensagemService.criaMensagem(idConjuge, mensagemRequest);
 		log.info("[finaliza] MensagemController - postMensagem");
 		return mensagemCriada;
+	}
+
+	@Override
+	public List<MensagemListResponse> getTodasMensagens() {
+		log.info("[inicia] MensagemController - getTodasMensagens");
+		log.info("[finaliza] MensagemController - getTodasMensagens");
+		return null;
 	}
 
 }
