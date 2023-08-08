@@ -12,4 +12,5 @@ public interface MensagemService {
 	MensagemResponse criaMensagem(UUID idConjuge, MensagemRequest mensagemRequest);
 	List<MensagemListResponse> buscaTodasMensagem();
 	MensagemDetalhadaResponse buscaMensagemPorId(UUID idConjuge, UUID idMensagem);
+	void alteraMensagemAtravesId(UUID idConjuge, UUID idMensagem);
 }

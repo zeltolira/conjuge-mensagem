@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemDetalhadaResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemListResponse;
@@ -37,5 +38,5 @@ public interface MensagemAPI {
 	
 	@PatchMapping(value = "/{idMensagem}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	void PatchMensagem(@PathVariable UUID idConjuge, @PathVariable UUID idMensagem, @valid @RequestBody MensagemAlteracaoRequest mensagemAlteracaoRequest);
+	void PatchMensagem(@PathVariable UUID idConjuge, @PathVariable UUID idMensagem, @Valid @RequestBody MensagemAlteracaoRequest mensagemAlteracaoRequest);
 }
