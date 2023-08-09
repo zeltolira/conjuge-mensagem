@@ -62,4 +62,11 @@ public class MensagemApplicationService implements MensagemService {
 		
 	}
 
+	@Override
+	public void deletaMensagemPorId(UUID idConjuge, UUID idMensagem) {
+		log.info("[inicia] MensagemApplicationService - deletaMensagemPorId");
+		log.info("[finaliza] MensagemApplicationService - deletaMensagemPorId");
+		
+	}
+
 }
