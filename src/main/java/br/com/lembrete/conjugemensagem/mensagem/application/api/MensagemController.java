@@ -54,4 +54,12 @@ public class MensagemController implements MensagemAPI {
 		
 	}
 
+	@Override
+	public void deletaMensagemPorId(UUID idConjuge, UUID idMensagem) {
+		log.info("[inicia] MensagemController - deletaMensagemPorId");
+		log.info("[IdConjuge] {} - [IdMensagem] {} - ", idConjuge, idMensagem);
+		mensagemService.deletaMensagemPorId(idConjuge, idMensagem);
+		log.info("[finaliza] MensagemController - deletaMensagemPorId");
+	}
+
 }
