@@ -45,4 +45,12 @@ public class MensagemInfraRepository implements MensagemRepository {
 		return mensagem;
 	}
 
+	@Override
+	public void deletaMensagem(Mensagem mensagem) {
+		log.info("[inicia] MensagemInfraRepository - deletaMensagem");
+		mensagemSpringDataJPARepository.delete(mensagem);
+		log.info("[finaliza] MensagemInfraRepository - deletaMensagem");
+		
+	}
+
 }

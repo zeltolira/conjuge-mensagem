@@ -9,4 +9,5 @@ public interface MensagemRepository {
 		Mensagem salvaMensagem(Mensagem mensagem);
 		List<Mensagem> buscaTodasMensagens();
 		Mensagem buscaMensagemPorId(UUID idConjuge, UUID idMensagem);
+		void deletaMensagem(Mensagem mensagem);
 }
