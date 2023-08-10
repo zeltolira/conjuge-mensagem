@@ -12,7 +12,9 @@ import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeL
 import br.com.lembrete.conjugemensagem.conjuge.application.api.response.ConjugeResponse;
 import br.com.lembrete.conjugemensagem.conjuge.application.repository.ConjugeRepository;
 import br.com.lembrete.conjugemensagem.conjuge.domain.Conjuge;
+import br.com.lembrete.conjugemensagem.usuario.application.repository.UsuarioRepository;
 import br.com.lembrete.conjugemensagem.usuario.application.service.UsuarioService;
+import br.com.lembrete.conjugemensagem.usuario.domain.Usuario;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -24,11 +26,13 @@ public class ConjugeApplicationService implements ConjugeService {
 
 	private final ConjugeRepository conjugeRepository;
 	private final UsuarioService usuarioService;
+	private final UsuarioRepository usuarioRepository;
 
 	@Override
 	public ConjugeResponse criaConjuge(UUID idUsuario, @Valid ConjugeRequest conjugeRequest) {
 		log.info("[inicia] ConjugeApplicationService - criaConjuge");
-		Conjuge conjuge = conjugeRepository.salvaConjuge(new Conjuge(idUsuario, conjugeRequest));
+		Usuario usuario = usuarioRepository.buscaUsuarioPorId(idUsuario);
+		Conjuge conjuge = conjugeRepository.salvaConjuge(new Conjuge(usuario, conjugeRequest));
 		log.info("[finaliza] ConjugeApplicationService - criaConjuge");
 		return ConjugeResponse.builder()
 				.idConjuge(conjuge.getIdConjuge())

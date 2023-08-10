@@ -2,17 +2,21 @@ package br.com.lembrete.conjugemensagem.conjuge.domain;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
+import br.com.lembrete.conjugemensagem.mensagem.domain.Mensagem;
 import br.com.lembrete.conjugemensagem.usuario.domain.Sexo;
 import br.com.lembrete.conjugemensagem.usuario.domain.Usuario;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
@@ -50,13 +54,17 @@ public class Conjuge {
 	
 	@OneToOne(mappedBy = "conjuge")
 	private Usuario usuario;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "conjuge")
+	private List<Mensagem> mensagem;
 
-	public Conjuge(UUID idUsuario, @Valid ConjugeRequest conjugeRequest) {
+	public Conjuge(Usuario usuario, @Valid ConjugeRequest conjugeRequest) {
 		this.nomeConjuge = conjugeRequest.getNomeConjuge();
 		this.sexo = conjugeRequest.getSexo();
 		this.celular = conjugeRequest.getCelular();
 		this.dataNascimento = conjugeRequest.getDataNascimento();
 		this.dataHoraUltimaAlteracao = LocalDateTime.now();
+		this.usuario = usuario;
 	}
 
 	public void altera(@Valid ConjugeAlteracaoRequest conjugeRequest) {
