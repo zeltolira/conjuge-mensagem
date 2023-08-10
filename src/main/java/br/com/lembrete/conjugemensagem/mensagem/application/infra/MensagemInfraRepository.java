@@ -39,8 +39,9 @@ public class MensagemInfraRepository implements MensagemRepository {
 	@Override
 	public Mensagem buscaMensagemPorId(UUID idConjuge, UUID idMensagem) {
 		log.info("[inicia] MensagemInfraRepository - buscaMensagemPorId");
+		
 		var mensagem = mensagemSpringDataJPARepository.findById(idMensagem)
-				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Conjuge não encotrado para o idConjuge " + idMensagem));;
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Mensagem não encotrada para o idConjuge " + idMensagem));;
 	log.info("[finaliza] MensagemInfraRepository - buscaMensagemPorId");
 		return mensagem;
 	}
