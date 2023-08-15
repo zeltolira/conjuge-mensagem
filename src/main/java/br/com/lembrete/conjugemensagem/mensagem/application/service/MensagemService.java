@@ -15,5 +15,5 @@ public interface MensagemService {
 	MensagemDetalhadaResponse buscaMensagemPorId(UUID idConjuge, UUID idMensagem);
 	void alteraMensagemAtravesId(UUID idConjuge, UUID idMensagem, MensagemAlteracaoRequest mensagemAlteracaoRequest);
 	void deletaMensagemPorId(UUID idConjuge, UUID idMensagem);
-	MensagemResponse buscaMensagemAleatoria();
+	MensagemResponse buscaMensagemAleatoria(UUID idConjuge);
 }

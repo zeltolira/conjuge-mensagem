@@ -47,5 +47,5 @@ public interface MensagemAPI {
 	
 	@GetMapping(value = "/aleatoria")
 	@ResponseStatus(code = HttpStatus.OK)
-	MensagemResponse getMensagemAleatoria();
+	MensagemResponse getMensagemAleatoria(@PathVariable UUID idConjuge);
 }

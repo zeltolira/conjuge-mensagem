@@ -63,9 +63,9 @@ public class MensagemController implements MensagemAPI {
 	}
 
 	@Override
-	public MensagemResponse getMensagemAleatoria() {
+	public MensagemResponse getMensagemAleatoria(UUID idConjuge) {
 		log.info("[inicia] MensagemController - getMensagemAleatoria");
-		MensagemResponse mensagemAleatoria = mensagemService.buscaMensagemAleatoria();
+		MensagemResponse mensagemAleatoria = mensagemService.buscaMensagemAleatoria(idConjuge);
 		log.info("[finaliza] MensagemController - getMensagemAleatoria");
 		return mensagemAleatoria;
 	}
