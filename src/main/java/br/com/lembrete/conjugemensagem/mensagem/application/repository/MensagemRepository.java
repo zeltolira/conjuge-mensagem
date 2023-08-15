@@ -10,4 +10,5 @@ public interface MensagemRepository {
 		List<Mensagem> buscaTodasMensagens();
 		Mensagem buscaMensagemPorId(UUID idConjuge, UUID idMensagem);
 		void deletaMensagem(Mensagem mensagem);
+		Mensagem buscaMensagemAleatoria(UUID idConjuge);
 }

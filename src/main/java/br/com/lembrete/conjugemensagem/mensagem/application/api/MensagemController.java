@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
+import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemAleatoriaResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemDetalhadaResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemListResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemResponse;
@@ -63,9 +64,9 @@ public class MensagemController implements MensagemAPI {
 	}
 
 	@Override
-	public MensagemResponse getMensagemAleatoria(UUID idConjuge) {
+	public MensagemAleatoriaResponse getMensagemAleatoria(UUID idConjuge) {
 		log.info("[inicia] MensagemController - getMensagemAleatoria");
-		MensagemResponse mensagemAleatoria = mensagemService.buscaMensagemAleatoria(idConjuge);
+		MensagemAleatoriaResponse mensagemAleatoria = mensagemService.buscaMensagemAleatoria(idConjuge);
 		log.info("[finaliza] MensagemController - getMensagemAleatoria");
 		return mensagemAleatoria;
 	}

@@ -54,4 +54,11 @@ public class MensagemInfraRepository implements MensagemRepository {
 		
 	}
 
+	@Override
+	public Mensagem buscaMensagemAleatoria(UUID idConjuge) {
+		log.info("[inicia] MensagemInfraRepository - buscaMensagemAleatoria");
+		log.info("[finaliza] MensagemInfraRepository - buscaMensagemAleatoria");
+		return null;
+	}
+
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.lembrete.conjugemensagem.conjuge.application.service.ConjugeService;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
+import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemAleatoriaResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemDetalhadaResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemListResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemResponse;
@@ -73,11 +74,11 @@ public class MensagemApplicationService implements MensagemService {
 	}
 
 	@Override
-	public MensagemResponse buscaMensagemAleatoria(UUID idConjuge) {
+	public MensagemAleatoriaResponse buscaMensagemAleatoria(UUID idConjuge) {
 		log.info("[inicia] MensagemApplicationService - buscaMensagemAleatoria");
-		
+		Mensagem mensagemAleatoria = mensagemRepository.buscaMensagemAleatoria(idConjuge);
 		log.info("[finaliza] MensagemApplicationService - buscaMensagemAleatoria");
-		return null;
+		return new MensagemAleatoriaResponse(mensagemAleatoria);
 	}
 
 }
