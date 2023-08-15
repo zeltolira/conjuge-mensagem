@@ -35,12 +35,13 @@ public class Mensagem {
 	private UUID idMensagem;
 	@NotBlank
 	private String mensagemAReceber;
+	private Conjuge idConjuge;
 	
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraUltimaAlteracao;
 
 	@ManyToOne
-	@JoinColumn(name = "id_conjuge")
+	@JoinColumn(name = "idConjuge")
 	private Conjuge conjuge;
 	
 	public Mensagem(UUID idConjuge, MensagemRequest mensagemRequest) {

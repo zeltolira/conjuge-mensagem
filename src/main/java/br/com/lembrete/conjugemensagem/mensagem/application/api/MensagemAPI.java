@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
-import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemAleatoriaResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemDetalhadaResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemListResponse;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemResponse;
@@ -45,8 +44,4 @@ public interface MensagemAPI {
 	@DeleteMapping(value = "/{idMensagem}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	void deletaMensagemPorId(@PathVariable UUID idConjuge, @PathVariable UUID idMensagem);
-	
-	@GetMapping(value = "/aleatoria")
-	@ResponseStatus(code = HttpStatus.OK)
-	MensagemAleatoriaResponse getMensagemAleatoria(@PathVariable UUID idConjuge);
 }
