@@ -62,4 +62,11 @@ public class MensagemController implements MensagemAPI {
 		log.info("[finaliza] MensagemController - deletaMensagemPorId");
 	}
 
+	@Override
+	public MensagemResponse getMensagemAleatoria() {
+		log.info("[inicia] MensagemController - getMensagemAleatoria");
+		log.info("[finaliza] MensagemController - getMensagemAleatoria");
+		return null;
+	}
+
 }
