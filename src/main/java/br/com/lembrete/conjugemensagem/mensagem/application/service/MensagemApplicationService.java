@@ -72,4 +72,11 @@ public class MensagemApplicationService implements MensagemService {
 		
 	}
 
+	@Override
+	public MensagemResponse buscaMensagemAleatoria() {
+		log.info("[inicia] MensagemApplicationService - buscaMensagemAleatoria");
+		log.info("[finaliza] MensagemApplicationService - buscaMensagemAleatoria");
+		return null;
+	}
+
 }

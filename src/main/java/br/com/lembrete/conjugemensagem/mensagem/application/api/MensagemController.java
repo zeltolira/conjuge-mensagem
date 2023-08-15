@@ -65,8 +65,9 @@ public class MensagemController implements MensagemAPI {
 	@Override
 	public MensagemResponse getMensagemAleatoria() {
 		log.info("[inicia] MensagemController - getMensagemAleatoria");
+		MensagemResponse mensagemAleatoria = mensagemService.buscaMensagemAleatoria();
 		log.info("[finaliza] MensagemController - getMensagemAleatoria");
-		return null;
+		return mensagemAleatoria;
 	}
 
 }
