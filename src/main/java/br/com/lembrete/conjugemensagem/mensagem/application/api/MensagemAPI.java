@@ -44,4 +44,6 @@ public interface MensagemAPI {
 	@DeleteMapping(value = "/{idMensagem}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	void deletaMensagemPorId(@PathVariable UUID idConjuge, @PathVariable UUID idMensagem);
+	
+	
 }
