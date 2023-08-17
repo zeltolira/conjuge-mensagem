@@ -13,6 +13,7 @@ import br.com.lembrete.conjugemensagem.usuario.domain.Usuario;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -55,7 +56,7 @@ public class Conjuge {
 	@OneToOne(mappedBy = "conjuge")
 	private Usuario usuario;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "conjuge")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "conjuge", fetch = FetchType.LAZY)
 	private List<Mensagem> mensagem;
 
 	public Conjuge(Usuario usuario, @Valid ConjugeRequest conjugeRequest) {
