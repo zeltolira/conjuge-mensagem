@@ -1,4 +1,4 @@
-package br.com.lembrete.conjugemensagem.usuario.application.infra;
+package br.com.lembrete.conjugemensagem.usuario.infra;
 
 import java.util.List;
 import java.util.UUID;
