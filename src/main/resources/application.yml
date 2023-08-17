@@ -5,7 +5,7 @@ server:
     
 spring.jpa.database: POSTGRESQL
 spring.datasource.driver-class-name: org.postgresql.Driver
-spring.datasource.url: jdbc:postgresql://localhost:5432/conjugeMensagens
+spring.datasource.url: jdbc:postgresql://localhost:5432/conjugeMensagem
 spring.datasource.username: postgres
 spring.datasource.password: admin
 spring.jpa.show-sql: true
