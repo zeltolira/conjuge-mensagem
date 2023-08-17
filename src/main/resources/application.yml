@@ -1,17 +1,22 @@
 server:
   servlet:
     context-path: /lembrete/api
-    
-    
-spring.jpa.database: POSTGRESQL
-spring.datasource.driver-class-name: org.postgresql.Driver
-spring.datasource.url: jdbc:postgresql://localhost:5432/conjugeMensagem
-spring.datasource.username: postgres
-spring.datasource.password: admin
-spring.jpa.show-sql: true
-spring.jpa.hibernate.ddl-auto: update
-spring.jpa.yml.hibernate.jdbc.lob.non_contextual_creation: true
+springdoc:
+  swagger-ui:
+    path: /public/swagger
+
 spring:
-  sql:
-    init:
-      platform: postgres
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/conjugeMensagem
+    username: postgres
+    password: admin
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        ddl-auto: update
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false

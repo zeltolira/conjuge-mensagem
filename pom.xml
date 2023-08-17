@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.lembrete</groupId>
-	<artifactId>conjuge-mensagem</artifactId>
+	<artifactId>conjugeMensagem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>conjuge-mensagem</name>
 	<description>esse projeto mantem as entidades usuario e conjuge</description>
@@ -50,6 +50,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- swagger dependencies -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.0.3</version>
 		</dependency>
 	</dependencies>
 
