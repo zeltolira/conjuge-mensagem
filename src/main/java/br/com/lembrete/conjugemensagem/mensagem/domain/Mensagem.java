@@ -35,7 +35,6 @@ public class Mensagem {
 	private UUID idMensagem;
 	@NotBlank
 	private String mensagemAReceber;
-	private Conjuge idConjuge;
 	
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraUltimaAlteracao;
