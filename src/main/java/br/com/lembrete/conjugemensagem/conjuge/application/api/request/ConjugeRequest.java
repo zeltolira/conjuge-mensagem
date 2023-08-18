@@ -11,13 +11,15 @@ import lombok.Value;
 @Value
 public class ConjugeRequest {
 	@NotBlank
-	private String nomeConjuge;
-	@NotNull
-	private Sexo sexo;
+	String nomeConjuge;
 	@NotBlank
-	private String celular;
+	String documento;
 	@NotNull
-	private LocalDate dataNascimento;
+	Sexo sexo;
+	@NotBlank
+	String celular;
+	@NotNull
+	LocalDate dataNascimento;
 
 	private LocalDateTime dataHoraDoCadastro;
 }

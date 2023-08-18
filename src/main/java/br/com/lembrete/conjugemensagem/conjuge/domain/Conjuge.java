@@ -13,6 +13,8 @@ import br.com.lembrete.conjugemensagem.usuario.domain.Usuario;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -43,7 +45,11 @@ public class Conjuge {
 	private UUID idConjuge;
 	@NotBlank
 	private String nomeConjuge;
+	@NotBlank
+	@Column(unique = true)
+	String documento;
 	@NotNull
+	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	@NotBlank
 	private String celular;
@@ -59,8 +65,9 @@ public class Conjuge {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "conjuge", fetch = FetchType.LAZY)
 	private List<Mensagem> mensagem;
 
-	public Conjuge(Usuario usuario, @Valid ConjugeRequest conjugeRequest) {
+	public Conjuge(Usuario usuario, ConjugeRequest conjugeRequest) {
 		this.nomeConjuge = conjugeRequest.getNomeConjuge();
+		this.documento = conjugeRequest.getDocumento();
 		this.sexo = conjugeRequest.getSexo();
 		this.celular = conjugeRequest.getCelular();
 		this.dataNascimento = conjugeRequest.getDataNascimento();
