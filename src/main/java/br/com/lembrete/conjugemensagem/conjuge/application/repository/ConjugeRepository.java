@@ -8,6 +8,6 @@ import br.com.lembrete.conjugemensagem.conjuge.domain.Conjuge;
 public interface ConjugeRepository {
 	Conjuge salvaConjuge(Conjuge conjuge);
 	List<Conjuge> buscaTodosConjuges();
-	Conjuge getConjugePorId(UUID idUsuario, UUID idConjuge);
+	Conjuge getConjugePorId(UUID idConjuge);
 	void deletaConjuge(Conjuge conjuge);
 }

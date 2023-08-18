@@ -15,5 +15,5 @@ public interface ConjugeService {
 	List<ConjugeListResponse> buscaTodosConjuges();
 	ConjugeDetalhadoResponse getConjugePorId(UUID idConjuge);
 	void alteraConjugeAtravesId(UUID idConjuge, @Valid ConjugeAlteracaoRequest conjugeAlteracaoRequest);
-	void deletaConjugePorId(UUID idUsuario, UUID idConjuge);
+	void deletaConjugePorId(UUID idConjuge);
 }

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import br.com.lembrete.conjugemensagem.conjuge.domain.Conjuge;
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioRequest;
 import jakarta.persistence.Entity;
@@ -44,7 +45,7 @@ public class Usuario {
 	
 //	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 //	@JoinColumn(name = fk_id_conjuge)
-//	private Conjuge conjuge;
+	private Conjuge conjuge;
 	
 	
 	public Usuario(UsuarioRequest usuarioRequest) {
@@ -63,6 +64,11 @@ public class Usuario {
 		this.dataNascimento = usuarioRequest.getDataNascimento();
 		this.dataHoraUltimaAlteracao = LocalDateTime.now();
 		
+	}
+
+
+	public void addConjuge(Conjuge conjuge) {
+		this.conjuge = conjuge;
 	}
 
 }

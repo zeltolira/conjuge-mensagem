@@ -34,5 +34,5 @@ public interface ConjugeAPI {
 	
 	@DeleteMapping(value = "/{idConjuge}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	void DeleteConjugePorId(@PathVariable UUID idUsuario, @PathVariable UUID idConjuge);
+	void DeleteConjugePorId(@PathVariable UUID idConjuge);
 }

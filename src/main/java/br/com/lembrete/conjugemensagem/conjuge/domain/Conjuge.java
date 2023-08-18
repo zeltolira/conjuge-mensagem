@@ -7,8 +7,11 @@ import java.util.UUID;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.conjuge.application.api.request.ConjugeRequest;
 import br.com.lembrete.conjugemensagem.usuario.domain.Sexo;
+import br.com.lembrete.conjugemensagem.usuario.domain.Usuario;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,6 +40,9 @@ public class Conjuge {
 	@NotBlank
 	private String nomeConjuge;
 	@NotNull
+	@Enumerated(EnumType.STRING)
+	String documento;
+	@NotNull
 	private Sexo sexo;
 	@NotBlank
 	private String celular;
@@ -49,8 +55,9 @@ public class Conjuge {
 //	@OneToOne(mappedBy = "conjuge")
 //	private Usuario usuario;
 
-	public Conjuge(UUID idUsuario, @Valid ConjugeRequest conjugeRequest) {
+	public Conjuge(Usuario usuario, ConjugeRequest conjugeRequest) {
 		this.nomeConjuge = conjugeRequest.getNomeConjuge();
+		this.documento = conjugeRequest.getDocumento();
 		this.sexo = conjugeRequest.getSexo();
 		this.celular = conjugeRequest.getCelular();
 		this.dataNascimento = conjugeRequest.getDataNascimento();

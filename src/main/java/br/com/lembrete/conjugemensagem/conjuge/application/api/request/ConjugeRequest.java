@@ -13,6 +13,8 @@ public class ConjugeRequest {
 	@NotBlank
 	private String nomeConjuge;
 	@NotNull
+	String documento;
+	@NotNull
 	private Sexo sexo;
 	@NotBlank
 	private String celular;
