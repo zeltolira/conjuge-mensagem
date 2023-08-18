@@ -13,7 +13,7 @@ import jakarta.validation.Valid;
 public interface ConjugeService {
 	ConjugeResponse criaConjuge(UUID idUsuario, @Valid ConjugeRequest conjugeRequest);
 	List<ConjugeListResponse> buscaTodosConjuges();
-	ConjugeDetalhadoResponse getConjugePorId(UUID idUsuario, UUID idConjuge);
-	void alteraConjugeAtravesId(UUID idUsuario, UUID idConjuge, @Valid ConjugeAlteracaoRequest conjugeAlteracaoRequest);
+	ConjugeDetalhadoResponse getConjugePorId(UUID idConjuge);
+	void alteraConjugeAtravesId(UUID idConjuge, @Valid ConjugeAlteracaoRequest conjugeAlteracaoRequest);
 	void deletaConjugePorId(UUID idUsuario, UUID idConjuge);
 }

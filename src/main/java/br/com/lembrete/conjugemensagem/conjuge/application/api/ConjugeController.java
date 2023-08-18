@@ -23,7 +23,7 @@ public class ConjugeController implements ConjugeAPI {
 	private final ConjugeService conjugeService;
 
 	@Override
-	public ConjugeResponse postConjuge(UUID idUsuario, @Valid ConjugeRequest conjugeRequest) {
+	public ConjugeResponse postConjuge(UUID idUsuario, ConjugeRequest conjugeRequest) {
 		log.info("[inicia] ConjugeController - postConjuge");
 		ConjugeResponse conjugeCriado = conjugeService.criaConjuge(idUsuario, conjugeRequest);
 		log.info("[finaliza] ConjugeController - postConjuge");
@@ -39,28 +39,24 @@ public class ConjugeController implements ConjugeAPI {
 	}
 
 	@Override
-	public ConjugeDetalhadoResponse getConjugePorId(UUID idUsuario, UUID idConjuge) {
+	public ConjugeDetalhadoResponse getConjugePorId(UUID idConjuge) {
 		log.info("[inicia] ConjugeController - getConjugePorId");
-		log.info("[idUsuario] {} - [idConjuge] {} - ", idUsuario, idConjuge);
-		ConjugeDetalhadoResponse conjugeDetalhado = conjugeService.getConjugePorId(idUsuario, idConjuge);
+		ConjugeDetalhadoResponse conjugeDetalhado = conjugeService.getConjugePorId(idConjuge);
 		log.info("[finaliza] ConjugeController - getConjugePorId");
 		return conjugeDetalhado;
 	}
 
 	@Override
-	public void PatchConjuge(UUID idUsuario, UUID idConjuge, @Valid ConjugeAlteracaoRequest conjugeAlteracaoRequest) {
+	public void PatchConjuge(UUID idUsuario, @Valid ConjugeAlteracaoRequest conjugeAlteracaoRequest) {
 		log.info("[inicia] ConjugeController - PatchConjuge");
-		log.info("[idUsuario] {} - [idConjuge] {} -", idUsuario, idConjuge);
-		conjugeService.alteraConjugeAtravesId(idUsuario, idConjuge, conjugeAlteracaoRequest);
+		conjugeService.alteraConjugeAtravesId(idUsuario, conjugeAlteracaoRequest);
 		log.info("[finaliza] ConjugeController - PatchConjuge");
 	}
 
 	@Override
 	public void DeleteConjugePorId(UUID idUsuario, UUID idConjuge) {
 		log.info("[inicia] ConjugeController - DeleteConjugePorId");
-		log.info("[idUsuario] {} - [idConjuge] {} -", idUsuario, idConjuge);
 		conjugeService.deletaConjugePorId(idUsuario, idConjuge);
 		log.info("[finaliza] ConjugeController - DeleteConjugePorId");
-		
 	}
 }

@@ -26,11 +26,11 @@ public interface ConjugeAPI {
 	
 	@GetMapping(value = "/{idConjuge}")
 	@ResponseStatus(code = HttpStatus.OK)
-	ConjugeDetalhadoResponse getConjugePorId(@PathVariable UUID idUsuario, @PathVariable UUID idConjuge);
+	ConjugeDetalhadoResponse getConjugePorId(@PathVariable UUID idConjuge);
 	
 	@PatchMapping(value = "/{idConjuge}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	void PatchConjuge(@PathVariable UUID idUsuario, @PathVariable UUID idConjuge, @Valid @RequestBody ConjugeAlteracaoRequest conjugeAlteracaoRequest);
+	void PatchConjuge(@PathVariable UUID idUsuario, @Valid @RequestBody ConjugeAlteracaoRequest conjugeAlteracaoRequest);
 	
 	@DeleteMapping(value = "/{idConjuge}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
