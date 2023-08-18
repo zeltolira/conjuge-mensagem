@@ -8,7 +8,10 @@ import br.com.lembrete.conjugemensagem.conjuge.domain.Conjuge;
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.usuario.application.api.request.UsuarioRequest;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -35,8 +38,12 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID idUsuario;
 	@NotBlank
+	@Column(unique = true)
+	String documento;
+	@NotBlank
 	private String nomeUsuario;
 	@NotNull
+	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	@NotBlank
 	private String celular;
@@ -53,6 +60,7 @@ public class Usuario {
 	
 	public Usuario(UsuarioRequest usuarioRequest) {
 		this.nomeUsuario = usuarioRequest.getNomeUsuario();
+		this.documento = usuarioRequest.getDocumento();
 		this.sexo = usuarioRequest.getSexo();
 		this.celular = usuarioRequest.getCelular();
 		this.dataNascimento = usuarioRequest.getDataNascimento();

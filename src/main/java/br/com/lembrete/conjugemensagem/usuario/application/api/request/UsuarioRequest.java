@@ -11,6 +11,8 @@ import lombok.Value;
 public class UsuarioRequest {
 	@NotBlank
 	private String nomeUsuario;
+	@NotBlank
+	String documento;
 	@NotNull
 	private Sexo sexo;
 	@NotBlank
