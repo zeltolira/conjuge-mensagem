@@ -36,7 +36,7 @@ public class ConjugeInfraRepository implements ConjugeRepository {
 	}
 
 	@Override
-	public Conjuge getConjugePorId(UUID idUsuario, UUID idConjuge) {
+	public Conjuge getConjugePorId(UUID idConjuge) {
 		log.info("[inicia] ConjugeInfraRepository - getConjugePorId");
 		var conjuge = conjugeSpringDataJPARepository.findById(idConjuge)
 				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Conjuge não encotrado para o idConjuge " + idConjuge));
@@ -51,5 +51,4 @@ public class ConjugeInfraRepository implements ConjugeRepository {
 		log.info("[finaliza] ConjugeInfraRepository - deletaConjuge");
 		
 	}
-
 }
