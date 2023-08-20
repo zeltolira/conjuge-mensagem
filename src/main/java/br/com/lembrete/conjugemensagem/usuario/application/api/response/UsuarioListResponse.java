@@ -13,6 +13,7 @@ import lombok.Value;
 public class UsuarioListResponse {
 	private UUID idUsuario;
 	private String nomeUsuario;
+	String documento;
 	private Sexo sexo;
 	private String celular;
 	private LocalDate dataNascimento;
@@ -28,6 +29,7 @@ public class UsuarioListResponse {
 	public UsuarioListResponse(Usuario usuario) {
 		this.idUsuario = usuario.getIdUsuario();
 		this.nomeUsuario = usuario.getNomeUsuario();
+		this.documento = usuario.getDocumento();
 		this.sexo = usuario.getSexo();
 		this.celular = usuario.getCelular();
 		this.dataNascimento = usuario.getDataNascimento();
