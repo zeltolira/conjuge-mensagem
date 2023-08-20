@@ -40,9 +40,10 @@ public class Conjuge {
 	@NotBlank
 	private String nomeConjuge;
 	@NotNull
-	@Enumerated(EnumType.STRING)
+	@Column(unique = true)
 	String documento;
 	@NotNull
+	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	@NotBlank
 	private String celular;
