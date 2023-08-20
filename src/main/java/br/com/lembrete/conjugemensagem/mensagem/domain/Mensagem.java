@@ -43,12 +43,12 @@ public class Mensagem {
 	@JoinColumn(name = "idConjuge")
 	private Conjuge conjuge;
 	
-	public Mensagem(UUID idConjuge, MensagemRequest mensagemRequest) {
+	public Mensagem(Conjuge conjuge, MensagemRequest mensagemRequest) {
 		this.mensagemAReceber = mensagemRequest.getMensagemAReceber();
 		this.dataHoraUltimaAlteracao = LocalDateTime.now();
 	}
 
-	public void altera(@Valid MensagemAlteracaoRequest mensagemRequest) {
+	public void altera(MensagemAlteracaoRequest mensagemRequest) {
 		this.mensagemAReceber = mensagemRequest.getMensagemAReceber();
 		this.dataHoraUltimaAlteracao = LocalDateTime.now();
 	}
