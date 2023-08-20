@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,28 +23,28 @@ import br.com.lembrete.conjugemensagem.mensagem.application.api.response.Mensage
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/v1/usuario/{idUsuario}/conjuge/{idConjuge}/mensagem")
+@RequestMapping(value = "/v1/mensagem/{idUsuario}")
 public interface MensagemAPI {
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	MensagemResponse postMensagem(@PathVariable UUID idConjuge,@Valid @RequestBody MensagemRequest mensagemRequest);
+	MensagemResponse postMensagem(@RequestParam UUID idUsuario,@Valid @RequestBody MensagemRequest mensagemRequest);
 	
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	List<MensagemListResponse> getTodasMensagens();
+	List<MensagemListResponse> getTodasMensagens(@RequestParam UUID idUsuario);
 	
 	@GetMapping(value = "/{idMensagem}")
 	@ResponseStatus(code = HttpStatus.OK)
-	MensagemDetalhadaResponse getMensagemPorId(@PathVariable UUID idConjuge, @PathVariable UUID idMensagem);
+	MensagemDetalhadaResponse getMensagemPorId(@RequestParam UUID idUsuario, @PathVariable Long idMensagem);
 	
 	@PatchMapping(value = "/{idMensagem}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	void PatchMensagem(@PathVariable UUID idConjuge, @PathVariable UUID idMensagem, @Valid @RequestBody MensagemAlteracaoRequest mensagemAlteracaoRequest);
+	void PatchMensagem(@PathVariable Long idMensagem, @Valid @RequestBody MensagemAlteracaoRequest mensagemAlteracaoRequest);
 	
 	@DeleteMapping(value = "/{idMensagem}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	void deletaMensagemPorId(@PathVariable UUID idConjuge, @PathVariable UUID idMensagem);
+	void deletaMensagemPorId(@PathVariable Long idMensagem);
 	
 	
 }
