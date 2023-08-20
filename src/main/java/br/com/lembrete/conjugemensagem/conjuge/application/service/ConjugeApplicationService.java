@@ -74,5 +74,4 @@ public class ConjugeApplicationService implements ConjugeService {
 		log.info("[finaliza] ConjugeApplicationService - alteraConjugeAtravesId");
 
 	}
-
 }

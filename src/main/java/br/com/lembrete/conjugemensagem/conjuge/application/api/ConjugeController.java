@@ -54,9 +54,9 @@ public class ConjugeController implements ConjugeAPI {
 	}
 
 	@Override
-	public void DeleteConjugePorId(UUID idUsuario, UUID idConjuge) {
+	public void DeleteConjugePorId(UUID idConjuge) {
 		log.info("[inicia] ConjugeController - DeleteConjugePorId");
-		conjugeService.deletaConjugePorId(idUsuario, idConjuge);
+		conjugeService.deletaConjugePorId(idConjuge);
 		log.info("[finaliza] ConjugeController - DeleteConjugePorId");
 	}
 }
