@@ -30,35 +30,33 @@ public class MensagemController implements MensagemAPI {
 	}
 
 	@Override
-	public List<MensagemListResponse> getTodasMensagens() {
+	public List<MensagemListResponse> getTodasMensagens(UUID idUsuario) {
 		log.info("[inicia] MensagemController - getTodasMensagens");
-		List<MensagemListResponse> mensagens = mensagemService.buscaTodasMensagem();
+		List<MensagemListResponse> mensagens = mensagemService.buscaTodasMensagem(idUsuario);
 		log.info("[finaliza] MensagemController - getTodasMensagens");
 		return mensagens;
 	}
 
 	@Override
-	public MensagemDetalhadaResponse getMensagemPorId(UUID idConjuge, UUID idMensagem) {
+	public MensagemDetalhadaResponse getMensagemPorId(UUID idUsuario, Long idMensagem) {
 		log.info("[inicia] MensagemController - getMensagemPorId");
-		MensagemDetalhadaResponse mensagemDetalhada = mensagemService.buscaMensagemPorId(idConjuge, idMensagem);
+		MensagemDetalhadaResponse mensagemDetalhada = mensagemService.buscaMensagemPorId(idUsuario, idMensagem);
 		log.info("[finaliza] MensagemController - getMensagemPorId");
 		return mensagemDetalhada;
 	}
 
 	@Override
-	public void PatchMensagem(UUID idConjuge, UUID idMensagem, MensagemAlteracaoRequest mensagemAlteracaoRequest) {
+	public void PatchMensagem(Long idMensagem, MensagemAlteracaoRequest mensagemAlteracaoRequest) {
 		log.info("[inicia] MensagemController - PatchMensagem");
-		log.info("[IdConjuge] {} - [IdMensagem] {} - ", idConjuge, idMensagem);
-		mensagemService.alteraMensagemAtravesId(idConjuge, idMensagem, mensagemAlteracaoRequest);
+		mensagemService.alteraMensagemAtravesId(idMensagem, mensagemAlteracaoRequest);
 		log.info("[finaliza] MensagemController - PatchMensagem");
 		
 	}
 
 	@Override
-	public void deletaMensagemPorId(UUID idConjuge, UUID idMensagem) {
+	public void deletaMensagemPorId(Long idMensagem) {
 		log.info("[inicia] MensagemController - deletaMensagemPorId");
-		log.info("[IdConjuge] {} - [IdMensagem] {} - ", idConjuge, idMensagem);
-		mensagemService.deletaMensagemPorId(idConjuge, idMensagem);
+		mensagemService.deletaMensagemPorId(idMensagem);
 		log.info("[finaliza] MensagemController - deletaMensagemPorId");
 	}
 
