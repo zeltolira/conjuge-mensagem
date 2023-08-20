@@ -1,7 +1,6 @@
 package br.com.lembrete.conjugemensagem.mensagem.domain;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 import br.com.lembrete.conjugemensagem.conjuge.domain.Conjuge;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemAlteracaoRequest;
@@ -14,7 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -31,8 +29,7 @@ import lombok.NoArgsConstructor;
 public class Mensagem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true, nullable = false)
-	private UUID idMensagem;
+	private Long idMensagem;
 	@NotBlank
 	private String mensagemAReceber;
 	

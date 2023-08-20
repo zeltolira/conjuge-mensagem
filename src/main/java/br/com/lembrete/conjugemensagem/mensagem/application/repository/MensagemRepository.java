@@ -10,6 +10,5 @@ public interface MensagemRepository {
 		Mensagem salvaMensagem(Mensagem mensagem);
 		List<Mensagem> buscaTodasMensagens(Conjuge conjuge);
 		Mensagem buscaMensagemPorId(Long idMensagem);
-		void deletaMensagem(Mensagem mensagem);
-		Mensagem buscaMensagemAleatoria(UUID idConjuge);
+		void deletaMensagem(Long idMensagem);
 }

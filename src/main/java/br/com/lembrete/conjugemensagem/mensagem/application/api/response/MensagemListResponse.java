@@ -9,7 +9,7 @@ import lombok.Value;
 
 @Value
 public class MensagemListResponse {
-	private UUID idMensagem;
+	private Long idMensagem;
 	private String mensagemAReceber;
 	
 	

@@ -7,7 +7,7 @@ import lombok.Value;
 
 @Value
 public class MensagemDetalhadaResponse {
-	private UUID idMensagem;
+	private Long idMensagem;
 	private String mensagemAReceber;
 
 	public MensagemDetalhadaResponse(Mensagem mensagem) {

@@ -16,7 +16,6 @@ import br.com.lembrete.conjugemensagem.mensagem.application.api.response.Mensage
 import br.com.lembrete.conjugemensagem.mensagem.application.repository.MensagemRepository;
 import br.com.lembrete.conjugemensagem.mensagem.domain.Mensagem;
 import br.com.lembrete.conjugemensagem.usuario.application.repository.UsuarioRepository;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -53,17 +52,16 @@ public class MensagemApplicationService implements MensagemService {
 	@Override
 	public MensagemDetalhadaResponse buscaMensagemPorId(UUID idUsuario, Long idMensagem) {
 		log.info("[inicia] MensagemApplicationService - buscaMensagemPorId");
-		
+		usuarioRepository.buscaUsuarioPorId(idUsuario).getConjuge().getIdConjuge();
 		Mensagem mensagem = mensagemRepository.buscaMensagemPorId(idMensagem);
 		log.info("[finaliza] MensagemApplicationService - buscaMensagemPorId");
 		return new MensagemDetalhadaResponse(mensagem);
 	}
 
 	@Override
-	public void alteraMensagemAtravesId(UUID idConjuge, UUID idMensagem, @Valid MensagemAlteracaoRequest mensagemAlteracaoRequest) {
+	public void alteraMensagemAtravesId(Long idMensagem, MensagemAlteracaoRequest mensagemAlteracaoRequest) {
 		log.info("[inicia] MensagemApplicationService - alteraMensagemAtravesId");
-		conjugeService.getConjugePorId(null, idConjuge);
-		Mensagem mensagem = mensagemRepository.buscaMensagemPorId(idConjuge, idMensagem);
+		Mensagem mensagem = mensagemRepository.buscaMensagemPorId(idMensagem);
 		mensagem.altera(mensagemAlteracaoRequest);
 		mensagemRepository.salvaMensagem(mensagem);
 		log.info("[finaliza] MensagemApplicationService - alteraMensagemAtravesId");
@@ -71,11 +69,9 @@ public class MensagemApplicationService implements MensagemService {
 	}
 
 	@Override
-	public void deletaMensagemPorId(UUID idConjuge, UUID idMensagem) {
+	public void deletaMensagemPorId(Long idMensagem) {
 		log.info("[inicia] MensagemApplicationService - deletaMensagemPorId");
-		conjugeService.getConjugePorId(null, idConjuge);
-		Mensagem mensagem = mensagemRepository.buscaMensagemPorId(idConjuge, idMensagem);
-		mensagemRepository.deletaMensagem(mensagem);
+		mensagemRepository.deletaMensagem(mensagemRepository.buscaMensagemPorId(idMensagem).getIdMensagem());
 		log.info("[finaliza] MensagemApplicationService - deletaMensagemPorId");
 		
 	}

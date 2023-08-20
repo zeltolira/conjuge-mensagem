@@ -1,11 +1,11 @@
 package br.com.lembrete.conjugemensagem.mensagem.infra;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
+import br.com.lembrete.conjugemensagem.conjuge.domain.Conjuge;
 import br.com.lembrete.conjugemensagem.handler.APIException;
 import br.com.lembrete.conjugemensagem.mensagem.application.repository.MensagemRepository;
 import br.com.lembrete.conjugemensagem.mensagem.domain.Mensagem;
@@ -29,36 +29,27 @@ public class MensagemInfraRepository implements MensagemRepository {
 	}
 
 	@Override
-	public List<Mensagem> buscaTodasMensagens() {
+	public List<Mensagem> buscaTodasMensagens(Conjuge conjuge) {
 		log.info("[inicia] MensagemInfraRepository - buscaTodasMensagens");
-		List<Mensagem> todasMensagens = mensagemSpringDataJPARepository.findAll();
+		List<Mensagem> todasMensagens = mensagemSpringDataJPARepository.findAllByConjuge(conjuge);
 		log.info("[finaliza] MensagemInfraRepository - buscaTodasMensagens");
 		return todasMensagens;
 	}
 
 	@Override
-	public Mensagem buscaMensagemPorId(UUID idConjuge, UUID idMensagem) {
+	public Mensagem buscaMensagemPorId(Long idMensagem) {
 		log.info("[inicia] MensagemInfraRepository - buscaMensagemPorId");
-		
 		var mensagem = mensagemSpringDataJPARepository.findById(idMensagem)
-				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Mensagem não encotrada para o idConjuge " + idMensagem));;
-	log.info("[finaliza] MensagemInfraRepository - buscaMensagemPorId");
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Mensagem não encontrada para o idConjuge "));
+		log.info("[finaliza] MensagemInfraRepository - buscaMensagemPorId");
 		return mensagem;
 	}
 
 	@Override
-	public void deletaMensagem(Mensagem mensagem) {
+	public void deletaMensagem(Long idMensagem) {
 		log.info("[inicia] MensagemInfraRepository - deletaMensagem");
-		mensagemSpringDataJPARepository.delete(mensagem);
+		mensagemSpringDataJPARepository.deleteById(idMensagem);
 		log.info("[finaliza] MensagemInfraRepository - deletaMensagem");
 		
-	}
-
-	@Override
-	public Mensagem buscaMensagemAleatoria(UUID idConjuge) {
-		log.info("[inicia] MensagemInfraRepository - buscaMensagemAleatoria");
-//		Mensagem mensagemAleatoria = mensagemSpringDataJPARepository.findRandomMessageByIdConjuge(idConjuge);
-		log.info("[finaliza] MensagemInfraRepository - buscaMensagemAleatoria");
-		return null;
 	}
 }

@@ -8,5 +8,5 @@ import lombok.Value;
 @Value
 @Builder
 public class MensagemResponse {
-	private UUID idMensagem;
+	private Long idMensagem;
 }
