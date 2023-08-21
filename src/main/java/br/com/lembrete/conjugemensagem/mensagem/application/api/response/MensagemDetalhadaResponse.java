@@ -1,7 +1,5 @@
 package br.com.lembrete.conjugemensagem.mensagem.application.api.response;
 
-import java.util.UUID;
-
 import br.com.lembrete.conjugemensagem.mensagem.domain.Mensagem;
 import lombok.Value;
 

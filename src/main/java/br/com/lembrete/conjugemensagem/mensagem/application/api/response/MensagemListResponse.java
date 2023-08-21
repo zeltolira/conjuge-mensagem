@@ -1,7 +1,6 @@
 package br.com.lembrete.conjugemensagem.mensagem.application.api.response;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import br.com.lembrete.conjugemensagem.mensagem.domain.Mensagem;

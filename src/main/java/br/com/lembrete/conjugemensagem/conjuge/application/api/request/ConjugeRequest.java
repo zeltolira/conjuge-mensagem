@@ -1,7 +1,6 @@
 package br.com.lembrete.conjugemensagem.conjuge.application.api.request;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import br.com.lembrete.conjugemensagem.usuario.domain.Sexo;
 import jakarta.validation.constraints.NotBlank;
@@ -20,6 +19,4 @@ public class ConjugeRequest {
 	String celular;
 	@NotNull
 	LocalDate dataNascimento;
-
-	private LocalDateTime dataHoraDoCadastro;
 }
