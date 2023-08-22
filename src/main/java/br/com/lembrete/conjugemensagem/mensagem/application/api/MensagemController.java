@@ -22,9 +22,9 @@ public class MensagemController implements MensagemAPI {
 	private final MensagemService mensagemService;
 
 	@Override
-	public MensagemResponse postMensagem(UUID idConjuge, MensagemRequest mensagemRequest) {
+	public MensagemResponse postMensagem(UUID idUsuario, MensagemRequest mensagemRequest) {
 		log.info("[inicia] MensagemController - postMensagem");
-		MensagemResponse mensagemCriada =  mensagemService.criaMensagem(idConjuge, mensagemRequest);
+		MensagemResponse mensagemCriada =  mensagemService.criaMensagem(idUsuario, mensagemRequest);
 		log.info("[finaliza] MensagemController - postMensagem");
 		return mensagemCriada;
 	}

@@ -10,9 +10,9 @@ import br.com.lembrete.conjugemensagem.mensagem.application.api.response.Mensage
 import br.com.lembrete.conjugemensagem.mensagem.application.api.response.MensagemResponse;
 
 public interface MensagemService {
-	MensagemResponse criaMensagem(UUID idConjuge, MensagemRequest mensagemRequest);
+	MensagemResponse criaMensagem(UUID idUsuario, MensagemRequest mensagemRequest);
 	List<MensagemListResponse> buscaTodasMensagem(UUID idUsuario);
-	MensagemDetalhadaResponse buscaMensagemPorId(UUID idConjuge, Long idMensagem);
+	MensagemDetalhadaResponse buscaMensagemPorId(UUID idUsuario, Long idMensagem);
 	void alteraMensagemAtravesId(Long idMensagem, MensagemAlteracaoRequest mensagemAlteracaoRequest);
 	void deletaMensagemPorId(Long idMensagem);
 }

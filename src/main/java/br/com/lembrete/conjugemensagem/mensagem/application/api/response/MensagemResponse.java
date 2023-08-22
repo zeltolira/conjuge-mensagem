@@ -6,5 +6,5 @@ import lombok.Value;
 @Value
 @Builder
 public class MensagemResponse {
-	private Long idMensagem;
+	Long idMensagem;
 }

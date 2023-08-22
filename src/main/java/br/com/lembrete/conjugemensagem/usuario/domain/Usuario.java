@@ -76,5 +76,8 @@ public class Usuario {
 		this.dataHoraUltimaAlteracao = LocalDateTime.now();
 		
 	}
+	public void addConjuge(Conjuge conjuge) {
+		this.conjuge = conjuge;
+	}
 
 }

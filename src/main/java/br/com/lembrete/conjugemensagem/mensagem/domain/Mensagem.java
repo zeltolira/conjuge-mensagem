@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "mensagem")
 public class Mensagem {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long idMensagem;
 	@NotBlank
 	private String mensagemAReceber;
