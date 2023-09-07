@@ -31,7 +31,7 @@ public interface UsuarioAPI {
 	
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	List<UsuarioListResponse> getTodosUsuario();
+	List<UsuarioListResponse> getTodosUsuarios();
 	
 	@GetMapping(value = "/{idUsuario}")
 	@ResponseStatus(code = HttpStatus.OK)

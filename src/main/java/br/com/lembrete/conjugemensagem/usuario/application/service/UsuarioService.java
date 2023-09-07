@@ -12,7 +12,7 @@ import jakarta.validation.Valid;
 
 public interface UsuarioService {
 	UsuarioResponse criaUsuario(@Valid UsuarioRequest usuarioRequest);
-	List<UsuarioListResponse> buscaTodosUsuario();
+	List<UsuarioListResponse> buscaTodosUsuarios();
 	UsuarioDetalhadoResponse buscaUsuarioPorId(UUID idUsuario);
 	void alteraUsuarioPorId(UUID idUsuario, UsuarioAlteracaoRequest usuarioAlteracaoResquest);
 	void deleta(UUID idUsuario);
