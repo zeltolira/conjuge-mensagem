@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import br.com.lembrete.conjugemensagem.conjuge.domain.Conjuge;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemAlteracaoRequest;
 import br.com.lembrete.conjugemensagem.mensagem.application.api.request.MensagemRequest;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -42,7 +41,7 @@ public class Mensagem {
 	
 	public Mensagem(Conjuge conjuge, MensagemRequest mensagemRequest) {
 		this.mensagemAReceber = mensagemRequest.getMensagemAReceber();
-		this.dataHoraUltimaAlteracao = LocalDateTime.now();
+		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
 
 	public void altera(MensagemAlteracaoRequest mensagemRequest) {
