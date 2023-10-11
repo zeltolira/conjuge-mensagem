@@ -71,7 +71,7 @@ public class Conjuge {
 		this.sexo = conjugeRequest.getSexo();
 		this.celular = conjugeRequest.getCelular();
 		this.dataNascimento = conjugeRequest.getDataNascimento();
-		this.dataHoraUltimaAlteracao = LocalDateTime.now();
+		this.dataHoraDoCadastro = LocalDateTime.now();
 		this.usuario = usuario;
 	}
 
